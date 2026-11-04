@@ -1,0 +1,74 @@
+/* TIC Small Multiples (bars with variance). Viz extensions cannot be transparent, so the page is solid white. */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+
+#chart { position: absolute; inset: 0; }
+#chart svg { display: block; }
+
+.sm-header { font-size: 12px; fill: #555555; }
+.sm-legend { font-size: 11px; fill: #555555; }
+.sm-note { font-size: 11px; fill: #a05a00; }
+.sm-panel-bg { fill: #fafafa; }
+.sm-title { font-size: 12px; font-weight: 600; fill: #333333; }
+.sm-title-standout { fill: #c00000; }
+.sm-latest { font-size: 11px; fill: #777777; }
+.sm-total-good { font-size: 11px; font-weight: 600; fill: #5f7a00; }
+.sm-total-bad { font-size: 11px; font-weight: 600; fill: #c00000; }
+.sm-grid { stroke: #e4e4e4; stroke-width: 1; shape-rendering: crispEdges; }
+.sm-zero { stroke: #404040; stroke-width: 1; shape-rendering: crispEdges; }
+.sm-tick { font-size: 10px; fill: #777777; }
+
+/* IBCS-style ink: dark grey bars, green above the comparison, red below it. */
+.sm-bar { fill: #8c8c8c; }
+.sm-var-good { fill: #8cb400; }
+.sm-var-bad { fill: #ff0000; }
+.sm-compare { stroke: #222222; stroke-width: 1.5; shape-rendering: crispEdges; }
+.sm-hover-band { fill: #e3ecf5; }
+
+/* "Two tiles stand out": the panels furthest below the comparison. */
+.sm-standout { fill: #fff3f3; stroke: #ff0000; stroke-width: 1.5; }
+.sm-legend-standout { fill: #fff3f3; stroke: #ff0000; stroke-width: 1.5; }
+
+#message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555555;
+}
+#message[hidden] { display: none; }
+#message strong { display: block; font-size: 15px; color: #333333; margin-bottom: 6px; }
+
+#tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  padding: 6px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 10;
+}
+#tooltip[hidden] { display: none; }
+#tooltip .tt-member { font-weight: 600; }
+#tooltip .tt-label { color: #777777; }
+#tooltip .tt-good { color: #5f7a00; font-weight: 600; }
+#tooltip .tt-bad { color: #c00000; font-weight: 600; }
